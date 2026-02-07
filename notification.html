@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="Notification">No Notification to Display</div>
+
+    <script
+      src="https://cdn.socket.io/4.8.3/socket.io.min.js"
+      integrity="sha384-kzavj5fiMwLKzzD1f8S7TeoVIEi7uKHvbTA3ueZkrzYq75pNQUiUi6Dy98Q3fxb0"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const socket = io("http://localhost:4001");
+      console.log(socket)
+
+      socket.on("connect", () => {
+        console.log("Connected to Server...", socket.id);
+      });
+
+      socket.on("notification", (data) => {
+        document.getElementById("Notification").innerHTML = data.message;
+      });
+    </script>
+  </body>
+</html
